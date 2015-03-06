@@ -1,6 +1,7 @@
 package vat
 
 import (
+	"sort"
 	"strings"
 	"time"
 )
@@ -51,4 +52,14 @@ func StandardRateAtDate(countryCode string, date time.Time) (rate float64, ok bo
 	countryCode = strings.ToUpper(countryCode)
 	rate, ok = standardRate[countryCode]
 	return
+}
+
+// Countries returns a list of all EU countries
+func Countries() []string {
+	keys := []string{}
+	for k := range standardRate {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
 }
