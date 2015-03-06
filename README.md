@@ -23,14 +23,14 @@ go get -u github.com/mattes/vat
 ```go
 import "github.com/mattes/vat"
 
-response, err := vat.Check("IE6388047V")
+response, err := vat.CheckVAT("IE6388047V")
 if err != nil {
   // do sth with err
 }
 fmt.Println(response.Name, response.Valid)
 
 // or ...
-valid, err := vat.IsValid("IE6388047V")
+valid, err := vat.IsValidVAT("IE6388047V")
 
 // increase timeout (default 10 seconds)
 vat.Timeout = 10
