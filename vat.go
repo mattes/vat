@@ -133,7 +133,7 @@ func getEnvelope(vatNumber string) (string, error) {
 
 	var result bytes.Buffer
 	if err := t.Execute(&result, map[string]string{
-		"countryCode": vatNumber[0:2],
+		"countryCode": strings.ToUpper(vatNumber[0:2]),
 		"vatNumber":   vatNumber[2:],
 	}); err != nil {
 		return "", err
