@@ -43,7 +43,7 @@ var (
 )
 
 // Check returns *VATresponse for vat number
-func Check(vatNumber string) (*VATresponse, error) {
+func CheckVAT(vatNumber string) (*VATresponse, error) {
 	vatNumber = sanitizeVatNumber(vatNumber)
 
 	e, err := getEnvelope(vatNumber)
@@ -107,7 +107,7 @@ func Check(vatNumber string) (*VATresponse, error) {
 
 // IsValid returns true if vat number is correct
 func IsValidVAT(vatNumber string) (bool, error) {
-	r, err := Check(vatNumber)
+	r, err := CheckVAT(vatNumber)
 	if err != nil {
 		return false, err
 	}

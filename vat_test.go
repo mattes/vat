@@ -7,7 +7,7 @@ import (
 )
 
 func TestCheck(t *testing.T) {
-	r, err := Check("IE6388047V")
+	r, err := CheckVAT("IE6388047V")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -33,7 +33,7 @@ func TestCheck(t *testing.T) {
 		t.Error("Wrong request date")
 	}
 
-	if _, err := Check("sdfsdf"); err == nil {
+	if _, err := CheckVAT("sdfsdf"); err == nil {
 		t.Error("missed an error")
 	}
 

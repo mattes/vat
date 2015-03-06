@@ -11,7 +11,7 @@ func main() {
 		fmt.Printf("usage: %v <vat-number>\n", os.Args[0])
 		os.Exit(2)
 	}
-	r, err := vat.Check(os.Args[1])
+	r, err := vat.CheckVAT(os.Args[1])
 	if err != nil {
 		fmt.Println("Error:", err)
 		os.Exit(2)
