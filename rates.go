@@ -7,6 +7,7 @@ import (
 
 // reference:
 // http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/how_vat_works/rates/vat_rates_en.pdf
+// last updated: March 6, 2015
 
 var standardRate = map[string]float64{
 	"BE": 21,
