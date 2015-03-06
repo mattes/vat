@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-type Response struct {
+type VATresponse struct {
 	CountryCode string
 	VATnumber   string
 	RequestDate time.Time
@@ -42,8 +42,8 @@ var (
 	ErrVATserviceUnreachable = errors.New("VAT number validation service is offline.")
 )
 
-// Check returns *Response for vat number
-func Check(vatNumber string) (*Response, error) {
+// Check returns *VATresponse for vat number
+func Check(vatNumber string) (*VATresponse, error) {
 	vatNumber = sanitizeVatNumber(vatNumber)
 
 	e, err := getEnvelope(vatNumber)
@@ -93,7 +93,7 @@ func Check(vatNumber string) (*Response, error) {
 		return nil, err
 	}
 
-	r := &Response{
+	r := &VATresponse{
 		CountryCode: rd.Soap.Soap.CountryCode,
 		VATnumber:   rd.Soap.Soap.VATnumber,
 		RequestDate: pDate,
@@ -106,7 +106,7 @@ func Check(vatNumber string) (*Response, error) {
 }
 
 // IsValid returns true if vat number is correct
-func IsValid(vatNumber string) (bool, error) {
+func IsValidVAT(vatNumber string) (bool, error) {
 	r, err := Check(vatNumber)
 	if err != nil {
 		return false, err

@@ -39,7 +39,7 @@ func TestCheck(t *testing.T) {
 
 }
 
-func TestIsValid(t *testing.T) {
+func TestIsValidVAT(t *testing.T) {
 	var tests = []struct {
 		vatNumber string
 		isValid   bool
@@ -53,7 +53,7 @@ func TestIsValid(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		v, err := IsValid(tt.vatNumber)
+		v, err := IsValidVAT(tt.vatNumber)
 		if err == nil {
 			if tt.isValid != v {
 				t.Errorf("Expected %v for %v, got %v", tt.isValid, tt.vatNumber, v)

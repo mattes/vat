@@ -10,7 +10,7 @@ import (
 func GetApplicableTaxAtDate(countryCode, vatNumber string, date time.Time) (taxRate float64, reverseCharge bool, err error) {
 	if vatNumber != "" {
 		// eu business
-		valid, err := IsValid(vatNumber)
+		valid, err := IsValidVAT(vatNumber)
 		if err != nil {
 			if err == ErrVATserviceUnreachable {
 				return 0, false, ErrVATserviceUnreachable
