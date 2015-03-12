@@ -19,9 +19,6 @@ func TestGetApplicableTax(t *testing.T) {
 		// business customer within EU
 		{"IE6388047V", "IE", 0, true, nil},
 
-		// business customer within EU, but wrong VAT number
-		{"IE6388047X", "IE", 0, false, ErrVATnumberNotValid},
-
 		// customer not in EU
 		{"", "CH", 0, false, nil},
 		{"", "AR", 0, false, nil},

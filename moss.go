@@ -4,27 +4,13 @@ import (
 	"time"
 )
 
-// GetApplicableTaxAtDate returns taxRate for person depending on
-// countryCode and if vatNumber is given.
-// err returns nil, ErrVATnumberNotValid or ErrVATserviceUnreachable
+// GetApplicableTaxAtDate returns taxRate and if reverseCharge is applicable
+// You should check the vatNumber with IsValidVAT(vatNumber) before
+// passing a vatNumber to this function.
 func GetApplicableTaxAtDate(countryCode, vatNumber string, date time.Time) (taxRate float64, reverseCharge bool, err error) {
 	if vatNumber != "" {
 		// eu business
-		valid, err := IsValidVAT(vatNumber)
-		if err != nil {
-			if err == ErrVATserviceUnreachable {
-				return 0, false, ErrVATserviceUnreachable
-			} else {
-				// override err with ErrVATnumberNotValid
-				return 0, false, ErrVATnumberNotValid
-			}
-		} else {
-			if valid {
-				return 0, true, nil
-			} else {
-				return 0, false, ErrVATnumberNotValid
-			}
-		}
+		return 0, true, nil
 	} else {
 		// person from EU or rest of world?
 		rate, ok := StandardRateAtDate(countryCode, date)
