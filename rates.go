@@ -63,3 +63,8 @@ func Countries() []string {
 	sort.Strings(keys)
 	return keys
 }
+
+func IsEUCountry(countryCode string) bool {
+	_, ok := standardRate[countryCode]
+	return ok
+}

@@ -23,3 +23,21 @@ func TestStandardRate(t *testing.T) {
 		t.Error("don't give rate for unknown countries")
 	}
 }
+
+func TestIsEUCountry(t *testing.T) {
+	var tests = []struct {
+		countryCode string
+		isEUCountry bool
+	}{
+		{"DE", true},
+		{"AT", true},
+		{"CH", false},
+		{"XX", false},
+	}
+
+	for _, tt := range tests {
+		if tt.isEUCountry != IsEUCountry(tt.countryCode) {
+			t.Error("Country is not an eu country")
+		}
+	}
+}
