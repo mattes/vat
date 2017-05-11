@@ -8,7 +8,7 @@ import (
 
 // reference:
 // http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/how_vat_works/rates/vat_rates_en.pdf
-// last updated: March 6, 2015
+// last updated: 1st Jan 2017
 
 var standardRate = map[string]float64{
 	"BE": 21,
@@ -17,7 +17,7 @@ var standardRate = map[string]float64{
 	"DK": 25,
 	"DE": 19,
 	"EE": 20,
-	"EL": 23,
+	"EL": 24,
 	"ES": 21,
 	"FR": 20,
 	"HR": 25,
@@ -33,7 +33,7 @@ var standardRate = map[string]float64{
 	"AT": 20,
 	"PL": 23,
 	"PT": 23,
-	"RO": 24,
+	"RO": 19,
 	"SI": 22,
 	"SK": 20,
 	"FI": 24,
