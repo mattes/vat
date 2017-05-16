@@ -8,7 +8,7 @@
 Uses the official [VIES VAT number validation SOAP web service](http://ec.europa.eu/taxation_customs/vies/vatRequest.html?locale=en)
 to validate european VAT numbers.
 
-Unfortunately their service is super unreliable. WTF
+Unfortunately their service is super unreliable.
 
 
 ## Install
