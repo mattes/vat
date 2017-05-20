@@ -3,7 +3,6 @@ package vat
 import (
 	"strings"
 	"testing"
-	"time"
 )
 
 func TestCheck(t *testing.T) {
@@ -27,16 +26,6 @@ func TestCheck(t *testing.T) {
 	if r.Address != "3RD FLOOR ,GORDON HOUSE ,BARROW STREET ,DUBLIN 4" {
 		t.Error("Wrong address")
 	}
-
-	year, month, day := r.RequestDate.Date()
-	if year != time.Now().Year() || month != time.Now().Month() || day != time.Now().Day() {
-		t.Error("Wrong request date")
-	}
-
-	if _, err := CheckVAT("sdfsdf"); err == nil {
-		t.Error("missed an error")
-	}
-
 }
 
 func TestIsValidVAT(t *testing.T) {
