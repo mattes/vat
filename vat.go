@@ -40,6 +40,7 @@ var Timeout = 10 // seconds
 var (
 	ErrVATnumberNotValid     = errors.New("VAT number is not valid.")
 	ErrVATserviceUnreachable = errors.New("VAT number validation service is offline.")
+	ErrVATserviceError       = "VAT number validation service returns an error : "
 )
 
 // Check returns *VATresponse for vat number
@@ -78,10 +79,19 @@ func CheckVAT(vatNumber string) (*VATresponse, error) {
 				Name        string   `xml:"name"`
 				Address     string   `xml:"address"`
 			}
+			SoapFault struct {
+				XMLName string `xml:"Fault"`
+				Code    string `xml:"faultcode"`
+				Message string `xml:"faultstring"`
+			}
 		}
 	}
 	if err := xml.Unmarshal(xmlRes, &rd); err != nil {
 		return nil, err
+	}
+
+	if rd.Soap.SoapFault.Message != "" {
+		return nil, errors.New(ErrVATserviceError + rd.Soap.SoapFault.Message)
 	}
 
 	if rd.Soap.Soap.RequestDate == "" {
