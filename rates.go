@@ -61,6 +61,18 @@ var standardRates = []Rates{
 			"RO": 19,
 		},
 	},
+	{
+		Since: since(2020, 7, 1),
+		Countries: map[string]float64{
+			"DE": 16,
+		},
+	},
+	{
+		Since: since(2021, 1, 1),
+		Countries: map[string]float64{
+			"DE": 19,
+		},
+	},
 
 	// add new rates at bottom ...
 }
